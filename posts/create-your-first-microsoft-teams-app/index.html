@@ -1,45 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Your First Microsoft Teams App</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/theme.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
 </head>
+
 <body>
-    <div id="_html" class="markdown-body"><h1 id="create-your-first-microsoft-teams-app"><a class="anchor" name="create-your-first-microsoft-teams-app" href="#create-your-first-microsoft-teams-app"><span class="octicon octicon-link"></span></a>Create Your First Microsoft Teams App</h1>
-        <p>Microsoft Teams is a Microsoft collaboration tool and gained more popularity during COVID-19, becoming Microsoft's fastest-growing business app ever (<a href="https://pulse.microsoft.com/en/work-productivity-en/na/fa2-reasons-why-you-should-start-using-microsoft-teams-today/">https://pulse.microsoft.com/en/work-productivity-en/na/fa2-reasons-why-you-should-start-using-microsoft-teams-today/</a>). But beyond the capabilities of collaboration and meetings, it comes with a rich library of extension apps which you can add to your teams.</p>
-        <p>Microsoft Teams lets apps integrate into your team channels and enables team members to switch between your application and conversations smoothly with the same context using Single-Sign-On (SSO).</p>
-        <p>In this article, I'm going to walk you through the steps to create your first app for Microsoft Teams and add it as a tab to your organization team channel.</p>
-        <p>Before we start, you need to have a Microsoft Teams account. It could be your personal or organization account. For this tutorial, I recommend using your personal account so you can add a custom app to the channels. If you want to use your organization account you need to be the owner of the team or have access to enable "Custom Teams App". You can find the instructions on how to enable custom Teams app in Microsoft website. <a href="https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading">https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading</a>.</p>
-        <h1 id="prepare-your-environment"><a class="anchor" name="prepare-your-environment" href="#prepare-your-environment"><span class="octicon octicon-link"></span></a>Prepare your environment</h1>
-        <p>We bootstrap this project using an open-source library called "generator-teams" (<a href="https://github.com/pnp/generator-teams">https://github.com/pnp/generator-teams</a>) from Microsoft 365 Patterns and Practices (PnP). This generator creates a JavaScript project using React framework. The generator itself uses a tool called "Yeoman" <a href="https://yeoman.io/">https://yeoman.io/</a> which is a client-side opinionated template generator. It takes care of creating everything to get started without any manual setup. </p>
-        <p>First, you need to have NodeJS installed on your machine. You can install the latest LTS version from NodeJS website (<a href="https://nodejs.org/dist/latest-v8.x/">https://nodejs.org/dist/latest-v8.x/</a>)</p>
-        <p>To be able to scaffold the project you need Yeoman tool and for running build tasks you need "Gulp CLI" (<a href="https://gulpjs.com/">https://gulpjs.com/</a>) which you can install using the following command:</p>
-        <pre><code>npm i -g yo gulp-cli</code></pre><p>Install <code>generator-teams</code> globally so <code>yo</code> command can use this template and scaffold the project.</p>
-        <pre><code>npm i -g generator-teams </code></pre><h1 id="create-the-app"><a class="anchor" name="create-the-app" href="#create-the-app"><span class="octicon octicon-link"></span></a>Create the App</h1>
-        <p>Now that the dependencies are installed you can use the <code>yo</code> command to generate the template code:</p>
-        <pre><code>yo teams</code></pre><p>You need to answer the questions to generate the template code based on your needs but for the sake of this tutorial we'll keep it simple and we won't include extra features in this project. For manifest version select <code>v1.5</code> which is the current general available schema and for hosting URL go with the default value for now and we'll change it in the config file later.</p>
+    <div id="_html" class="markdown-body">
+        <h1 id="create-your-first-microsoft-teams-app"><a class="anchor" name="create-your-first-microsoft-teams-app"
+                href="#create-your-first-microsoft-teams-app"><span class="octicon octicon-link"></span></a>Create Your
+            First Microsoft Teams App</h1>
+        <p>Microsoft Teams is a Microsoft collaboration tool and gained more popularity during COVID-19, becoming
+            <a target="_blank"
+                href="https://pulse.microsoft.com/en/work-productivity-en/na/fa2-reasons-why-you-should-start-using-microsoft-teams-today/">
+                Microsoft's fastest-growing business app</a>
+            ever.
+            But beyond the capabilities of collaboration and meetings, it comes with a rich library of extension apps
+            which you can add to your teams.</p>
+        <p>Microsoft Teams lets apps integrate into your team channels and enables team members to switch between your
+            application and conversations smoothly with the same context using Single-Sign-On (SSO).</p>
+        <p>In this article, I'm going to walk you through the steps to create your first app for Microsoft Teams and add
+            it as a tab to your organization team channel.</p>
+        <p>Before we start, you need to have a Microsoft Teams account. It could be your personal or organization
+            account. For this tutorial, I recommend using your personal account so you can add a custom app to the
+            channels. If you want to use your organization account you need to be the owner of the team or have access
+            to enable "Custom Teams App". You can find the instructions on
+            <a
+                href="https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading">how
+                to enable custom Teams app</a>
+            in Microsoft website.
+        </p>
+        <h1 id="prepare-your-environment"><a class="anchor" name="prepare-your-environment"
+                href="#prepare-your-environment"><span class="octicon octicon-link"></span></a>Prepare your environment
+        </h1>
+        <p>We bootstrap this project using an open-source library called
+            <a target="_blank" href="https://github.com/pnp/generator-teams">generator-teams</a>
+            from Microsoft
+            365 Patterns and Practices (PnP). This generator creates a JavaScript project using React framework. The
+            generator itself uses a tool called
+            <a target="_blank" href="https://yeoman.io/">Yeoman</a>
+            which is a client-side opinionated template generator. It takes care of creating everything to get started
+            without any
+            manual setup. </p>
+        <p>First, you need to have NodeJS installed on your machine. You can install the latest LTS version from
+            <a target="_blank" href="https://nodejs.org/dist/latest-v8.x/">
+                NodeJS
+            </a>
+            website</p>
+        <p>To be able to scaffold the project you need Yeoman tool and for running build tasks you need
+            <a target="_blank" href="https://gulpjs.com/">Gulp</a>
+            CLI which you can install using the following command:
+        </p>
+        <pre><code>npm i -g yo gulp-cli</code></pre>
+        <p>Install <code>generator-teams</code> globally so <code>yo</code> command can use this template and scaffold
+            the project.</p>
+        <pre><code>npm i -g generator-teams </code></pre>
+        <h1 id="create-the-app"><a class="anchor" name="create-the-app" href="#create-the-app"><span
+                    class="octicon octicon-link"></span></a>Create the App</h1>
+        <p>Now that the dependencies are installed you can use the <code>yo</code> command to generate the template
+            code:</p>
+        <pre><code>yo teams</code></pre>
+        <p>You need to answer the questions to generate the template code based on your needs but for the sake of this
+            tutorial we'll keep it simple and we won't include extra features in this project. For manifest version
+            select <code>v1.5</code> which is the current general available schema and for hosting URL go with the
+            default value for now and we'll change it in the config file later.</p>
         <p><img src="img/01.png" alt=""></p>
         <p>After answering all the questions it'll take a few minutes to complete generating the code template.</p>
-        <h1 id="project-structure"><a class="anchor" name="project-structure" href="#project-structure"><span class="octicon octicon-link"></span></a>Project structure</h1>
-        <p>The project has been scaffolded to a React project and uses Gulp and Webpack for building and bundling of the source code. Open the project in your favourite editor and navigate to <code>src</code> directory. This is the directory that holds all the source code for your application.</p>
-        <p>Your app component is in <code>src/app/scripts/{your-app-name}/{your-app-name}.tsx</code>. This component is the entry point to your app and you can see that it's a React component with the name of your application. If you want to customize your application you need to change this component.</p>
-        <p>For building and bundling of the application, a combination of Gulp and Webpack has been used. In <code>/gulpfile.js</code> you can see all the commands you can run against your code. Typically you don't need to modify this file since it's been designed in a way to work out of the box. But, in this tutorial, we will modify this file to make the build process more efficient.</p>
-        <p>For a more detailed description of each part of your app read the <code>README.md</code> file in your project.</p>
-        <h1 id="run-your-application"><a class="anchor" name="run-your-application" href="#run-your-application"><span class="octicon octicon-link"></span></a>Run your Application</h1>
-        <p>For running your application locally you need a local webserver. <code>gulp serve</code> command builds the project and starts a local web server on port <code>3007</code>. If you navigate to <code>http://localhost:3007/</code> you should be able to see your application running. However, this is not your application component and if you want to preview your app, add your application name to the URL: <code>http://localhost:3007/testAppTab/</code>.</p>
+        <h1 id="project-structure"><a class="anchor" name="project-structure" href="#project-structure"><span
+                    class="octicon octicon-link"></span></a>Project structure</h1>
+        <p>The project has been scaffolded to a React project and uses Gulp and Webpack for building and bundling of the
+            source code. Open the project in your favourite editor and navigate to <code>src</code> directory. This is
+            the directory that holds all the source code for your application.</p>
+        <p>Your app component is in <code>src/app/scripts/{your-app-name}/{your-app-name}.tsx</code>. This component is
+            the entry point to your app and you can see that it's a React component with the name of your application.
+            If you want to customize your application you need to change this component.</p>
+        <p>For building and bundling of the application, a combination of Gulp and Webpack has been used. In
+            <code>/gulpfile.js</code> you can see all the commands you can run against your code. Typically you don't
+            need to modify this file since it's been designed in a way to work out of the box. But, in this tutorial, we
+            will modify this file to make the build process more efficient.</p>
+        <p>For a more detailed description of each part of your app read the <code>README.md</code> file in your
+            project.</p>
+        <h1 id="run-your-application"><a class="anchor" name="run-your-application" href="#run-your-application"><span
+                    class="octicon octicon-link"></span></a>Run your Application</h1>
+        <p>For running your application locally you need a local webserver. <code>gulp serve</code> command builds the
+            project and starts a local web server on port <code>3007</code>. If you navigate to
+            <code>http://localhost:3007/</code> you should be able to see your application running. However, this is not
+            your application component and if you want to preview your app, add your application name to the URL:
+            <code>http://localhost:3007/testAppTab/</code>.</p>
         <p><img src="img/02.png" alt=""></p>
-        <p>Congrats! Now you have a running app in your browser which you can upload to Microsoft Teams. But before that, we are going to fix the build performance in the next step.</p>
-        <h1 id="improve-build-performance"><a class="anchor" name="improve-build-performance" href="#improve-build-performance"><span class="octicon octicon-link"></span></a>Improve build performance</h1>
-        <p>If you navigate to <code>gulpfile.js</code> and take a look at the available commands you'll see that the <code>serve</code> task is comprised of other tasks like <code>build</code> and <code>watch</code>, likewise the <code>build</code> task uses <code>webpack</code> and <code>styles</code> tasks. If we want to understand what exactly happens when we run any gulp command we need to trace all the sub-commands. The <code>serve</code> command builds the project using Webpack, watches for file changes (in debug mode), and rebuilds the project on any changes made to the code.</p>
-        <p>If you run the application in debug mode using <code>npm run debug</code> and modify any file in the <code>src</code> folder it'll trigger a new build for the entire project including the <code>node_modules</code> folder which is an expensive operation for every single change. On my machine, it'll take around 11 seconds for the "Hello World" project and it'll increase as you add more dependencies to your application.</p>
+        <p>Congrats! Now you have a running app in your browser which you can upload to Microsoft Teams. But before
+            that, we are going to fix the build performance in the next step.</p>
+        <h1 id="improve-build-performance"><a class="anchor" name="improve-build-performance"
+                href="#improve-build-performance"><span class="octicon octicon-link"></span></a>Improve build
+            performance</h1>
+        <p>If you navigate to <code>gulpfile.js</code> and take a look at the available commands you'll see that the
+            <code>serve</code> task is comprised of other tasks like <code>build</code> and <code>watch</code>, likewise
+            the <code>build</code> task uses <code>webpack</code> and <code>styles</code> tasks. If we want to
+            understand what exactly happens when we run any gulp command we need to trace all the sub-commands. The
+            <code>serve</code> command builds the project using Webpack, watches for file changes (in debug mode), and
+            rebuilds the project on any changes made to the code.</p>
+        <p>If you run the application in debug mode using <code>npm run debug</code> and modify any file in the
+            <code>src</code> folder it'll trigger a new build for the entire project including the
+            <code>node_modules</code> folder which is an expensive operation for every single change. On my machine,
+            it'll take around 11 seconds for the "Hello World" project and it'll increase as you add more dependencies
+            to your application.</p>
         <p><img src="img/04.png" alt=""></p>
-        <p>For fixing this issue we are going to use Webpack SplitChunk Plugin <a href="https://webpack.js.org/guides/code-splitting/#splitchunksplugin">https://webpack.js.org/guides/code-splitting/#splitchunksplugin</a> which splits the bundles of vendor scripts (node modules) and our application scripts.</p>
-        <p>The first step to split scripts is to add vendor script to the inject sources of <code>gulp.config.js</code> file. This will tell <code>gulp</code> to include in the final HTML any JavaScript file where the name starts with <code>vendors</code>. All the <code>node_modules</code> and third-party libraries will go into this file and <code>build</code> won't touch this file on application code change. This has a huge impact on build time especially if you have many dependencies.</p>
+        <p>For fixing this issue we are going to use
+            <a target="_blank"
+                href="https://webpack.js.org/guides/code-splitting/#splitchunksplugin">Webpack SplitChunk Plugin</a>
+            which splits the bundles of vendor scripts (node modules) and our application scripts.</p>
+        <p>The first step to split scripts is to add vendor script to the inject sources of <code>gulp.config.js</code>
+            file. This will tell <code>gulp</code> to include in the final HTML any JavaScript file where the name
+            starts with <code>vendors</code>. All the <code>node_modules</code> and third-party libraries will go into
+            this file and <code>build</code> won't touch this file on application code change. This has a huge impact on
+            build time especially if you have many dependencies.</p>
         <p><img src="img/05.png" alt=""></p>
         <p>Swap Gulp watch with Webpack watch by removing <code>watch</code> from <code>gulpfile.js</code>...</p>
         <p><img src="img/06.png" alt=""></p>
@@ -47,22 +128,49 @@
         <p><img src="img/07.png" alt=""></p>
         <p>Finally, you need to enable the split chunk plugin by adding it to <code>webpack.config.js</code>:</p>
         <p><img src="img/08.png" alt=""></p>
-        <p>Now if you run your local server using <code>gulp serve</code>, it only builds the project for the first time and starts the webserver. For watch and rebuild you need to run <code>npm run watch</code> to watch for any changes to the source files and automatically rebuild the project. If we test the application using this new <code>watch</code> we can see that the build time has been reduced to around 500 milliseconds which is around 20 times faster for the almost empty project.</p>
+        <p>Now if you run your local server using <code>gulp serve</code>, it only builds the project for the first time
+            and starts the webserver. For watch and rebuild you need to run <code>npm run watch</code> to watch for any
+            changes to the source files and automatically rebuild the project. If we test the application using this new
+            <code>watch</code> we can see that the build time has been reduced to around 500 milliseconds which is
+            around 20 times faster for the almost empty project.</p>
         <p><img src="img/09.png" alt=""></p>
-        <p>You can confirm split chunk is working by navigating to <code>/dist/web/scripts</code> where you can see two script files, one for node modules (<code>vendors~client.js</code>) and the other for your application code (<code>client.js</code>). It's obvious why the default approach should take longer by looking at the size of the vendor script bundle which is around 6 MB compared to the size of the client script which is 28 KB. Another point is the modified date of the vendor script bundle, which shows that this file hasn't been modified after the first build but <code>client.js</code> has been recreated every time we modified the source code.</p>
+        <p>You can confirm split chunk is working by navigating to <code>/dist/web/scripts</code> where you can see two
+            script files, one for node modules (<code>vendors~client.js</code>) and the other for your application code
+            (<code>client.js</code>). It's obvious why the default approach should take longer by looking at the size of
+            the vendor script bundle which is around 6 MB compared to the size of the client script which is 28 KB.
+            Another point is the modified date of the vendor script bundle, which shows that this file hasn't been
+            modified after the first build but <code>client.js</code> has been recreated every time we modified the
+            source code.</p>
         <p><img src="img/10.png" alt=""></p>
-        <h1 id="upload-to-the-teams"><a class="anchor" name="upload-to-the-teams" href="#upload-to-the-teams"><span class="octicon octicon-link"></span></a>Upload to the Teams</h1>
-        <p>Uploading your application to Microsoft teams is done using a manifest file. If you run <code>gulp manifest</code>, it’ll generate a zipped manifest file in the <code>/package</code> directory. You can change the manifest details by modifying <code>/src/manifest/manifest.json</code>.</p>
-        <p>It's important to know that Microsoft Teams doesn't provide you with the hosting space for your app and you need to host it yourself somewhere which is publicly accessible.  If you’re just going to test your application you can use <code>ngrok</code> (<a href="https://ngrok.com/">https://ngrok.com/</a>) to host it from your <code>localhost</code>.
-        Run the following command to host it locally:</p>
-        <pre><code>gulp ngrok-serve</code></pre><p><img src="img/11.png" alt=""></p>
-        <p>If you are using the free version of <code>ngrok</code>, when creating a proxy, it'll create a random subdomain for you. You'll then need to update the <code>.env</code> file with the automatically generated host and run <code>gulp manifest</code> to create the manifest file. You can confirm that your application is accessible from the internet by navigating to the <code>ngrok</code> URL.</p>
+        <h1 id="upload-to-the-teams"><a class="anchor" name="upload-to-the-teams" href="#upload-to-the-teams"><span
+                    class="octicon octicon-link"></span></a>Upload to the Teams</h1>
+        <p>Uploading your application to Microsoft teams is done using a manifest file. If you run
+            <code>gulp manifest</code>, it’ll generate a zipped manifest file in the <code>/package</code> directory.
+            You can change the manifest details by modifying <code>/src/manifest/manifest.json</code>.</p>
+        <p>It's important to know that Microsoft Teams doesn't provide you with the hosting space for your app and you
+            need to host it yourself somewhere which is publicly accessible. If you’re just going to test your
+            application you can use
+            <a target="_blank" href="https://ngrok.com/">ngrok</a>
+            to host it
+            from your <code>localhost</code>.
+            Run the following command to host it locally:</p>
+        <pre><code>gulp ngrok-serve</code></pre>
+        <p><img src="img/11.png" alt=""></p>
+        <p>If you are using the free version of <code>ngrok</code>, when creating a proxy, it'll create a random
+            subdomain for you. You'll then need to update the <code>.env</code> file with the automatically generated
+            host and run <code>gulp manifest</code> to create the manifest file. You can confirm that your application
+            is accessible from the internet by navigating to the <code>ngrok</code> URL.</p>
         <p><img src="img/12.png" alt=""></p>
-        <p>Once you've created the manifest package and tested that your application is accessible from the <code>ngrok</code> domain, open your Teams client, click on "Apps" at the bottom-left corner and select "Upload a custom app". Select your manifest package zip file located in <code>/package/{your-app-name}.zip</code> and add it to your application gallery.</p>
+        <p>Once you've created the manifest package and tested that your application is accessible from the
+            <code>ngrok</code> domain, open your Teams client, click on "Apps" at the bottom-left corner and select
+            "Upload a custom app". Select your manifest package zip file located in
+            <code>/package/{your-app-name}.zip</code> and add it to your application gallery.</p>
         <p><img src="img/13.png" alt=""></p>
-        <p>Finally, you need to add your application as a tab to any channel you want. Click on the plus button next to your channels tab and add your application.</p>
+        <p>Finally, you need to add your application as a tab to any channel you want. Click on the plus button next to
+            your channels tab and add your application.</p>
         <p><img src="img/15.png" alt=""></p>
         <p>Congratulations! You've built and deployed your first Microsoft Teams App.</p>
     </div>
 </body>
+
 </html>
