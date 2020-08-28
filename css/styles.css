@@ -7,3 +7,16 @@ body {
     margin: 2rem auto;
     padding: 0 1rem;
 }
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+header img {
+    width: 32px;
+    margin-right: 0.5rem;
+}
+
+
