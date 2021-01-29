@@ -1,5 +1,17 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
 body {
     margin: auto;
+}
+
+body .container {
+    padding: 1rem 2rem;
+}
+
+h1 {
+    font-size: 2rem;
 }
 
 .markdown-body {
@@ -11,12 +23,23 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.15);
+    background-color: #fafafb;
+    margin-bottom: 1rem;
 }
 
-header img {
-    width: 32px;
-    margin-right: 0.5rem;
+header a {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+.blog-list-container li {
+    margin-bottom: 1rem;
 }
 
 
